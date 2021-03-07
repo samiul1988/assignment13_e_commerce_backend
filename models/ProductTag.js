@@ -19,7 +19,7 @@ ProductTag.init(
             model: 'product',
             key: 'id'
         },
-        onDelete: 'cascade'
+        onDelete: 'cascade' // if a product is deleted, then delete corresponding rows from the product_tag table 
     },
     tag_id: {
         type: DataTypes.INTEGER,
@@ -27,7 +27,7 @@ ProductTag.init(
             model: 'tag',
             key: 'id'
         },
-        onDelete: 'cascade'
+        onDelete: 'cascade' // if a tag is deleted, then delete corresponding rows from the product_tag table 
     }
   },
   {

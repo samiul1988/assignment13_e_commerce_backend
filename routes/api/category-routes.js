@@ -9,11 +9,11 @@ router.get('/', (req, res) => {
     Category.findAll({
         include: [Product]
     })
-        .then(dbCategoryData => res.status(200).json(dbCategoryData))
-        .catch(err => {
-            console.log(err);
-            res.status(500).json(err);
-        });
+    .then(dbCategoryData => res.status(200).json(dbCategoryData))
+    .catch(err => {
+        console.log(err);
+        res.status(500).json(err);
+    });
 });
 
 router.get('/:id', (req, res) => {
@@ -61,7 +61,6 @@ router.put('/:id', (req, res) => {
         }
     })
     .then(dbCategoryData => {
-        console.log(dbCategoryData);
         if (!dbCategoryData[0]) {
             res.status(404).json({ message: 'No category found with this id' });
             return;
@@ -79,11 +78,9 @@ router.delete('/:id', (req, res) => {
     Category.destroy({
         where: {
             id: req.params.id
-        },
-        returning: true
+        }
     })
     .then(dbCategoryData => {
-        console.log(dbCategoryData);
         if (!dbCategoryData) {
             res.status(404).json({ message: 'No category found with this id' });
             return;
